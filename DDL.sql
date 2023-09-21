@@ -17,12 +17,12 @@ CREATE TABLE cliente (
   nome_responsavel varchar(100) NOT NULL,
   nome_fantasia varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
-  CEP char(9) NOT NULL,
+  cep char(9) NOT NULL,
   endereco varchar(50) NOT NULL,
   bairro varchar(30) NOT NULL,
   cidade varchar(30) NOT NULL,
   estado varchar(25) NOT NULL,
-  PRIMARY KEY (ID),
+  PRIMARY KEY (id),
   UNIQUE KEY cnpj_unique (cnpj)
 );
 
