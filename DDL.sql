@@ -44,7 +44,7 @@ CREATE TABLE usuario (
   CONSTRAINT FOREIGN KEY fk_usuario_setor (fk_setor) REFERENCES setor(id)
 );
 
-CREATE TABLE ordem_de_serviço (
+CREATE TABLE ordem_de_servico (
   id int NOT NULL AUTO_INCREMENT,
   descrição varchar(500) DEFAULT NULL,
   status_ordem varchar(15) DEFAULT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE ordem_de_serviço (
   CONSTRAINT fk_ordem_de_servico_setor FOREIGN KEY (fk_setor) REFERENCES setor (id)
 );
 
-CREATE TABLE serviço (
+CREATE TABLE servico (
   id int NOT NULL AUTO_INCREMENT,
   nome varchar(50) DEFAULT NULL,
   descrição varchar(500) DEFAULT NULL,
@@ -78,15 +78,15 @@ CREATE TABLE produto (
   validade char(10) DEFAULT NULL,
   fk_servico int,
   PRIMARY KEY (id),
-  CONSTRAINT fk_produto_servico FOREIGN KEY (fk_servico) REFERENCES serviço (id)
+  CONSTRAINT fk_produto_servico FOREIGN KEY (fk_servico) REFERENCES servico (id)
 );
 
-CREATE TABLE atribuicao_servico (
+CREATE TABLE atribuicao_ordem_servico (
   id int NOT NULL AUTO_INCREMENT,
   comentario varchar(300) DEFAULT NULL,
   status_andamento varchar(25) DEFAULT NULL,
   PRIMARY KEY (id),
-  fk_servico int NOT NULL,
+  fk_servico int,
   fk_ordem_de_servico int NOT NULL,
   fk_usuario int NOT NULL,
   CONSTRAINT fk_atribuicao_servico FOREIGN KEY (fk_servico) REFERENCES servico (id),
