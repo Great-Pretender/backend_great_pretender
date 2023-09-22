@@ -1,6 +1,5 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
-import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,9 +28,11 @@ public class Setor {
     @JsonIgnore
     private Set<Usuario> usuarios;
 
-    @OneToMany(mappedBy = "ordemsrv", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<OrdemDeServico> ordemDeServicos;
+    @OneToMany(mappedBy = "servico", fetch = FetchType.LAZY)
+    private Set<Servico> servicos;
+
+    @OneToMany(mappedBy = "ordem_de_servico", fetch = FetchType.LAZY)
+    private Set<OrdemDeServico> ordemDeServicos;
 
 
     public Setor() {}
@@ -56,4 +57,21 @@ public class Setor {
         public void setNome(String nome) {
             this.nome = nome;
         }
+
+        public Set<Servico> getServicos() {
+            return servicos;
+        }
+
+        public void setServicos(Set<Servico> servicos) {
+            this.servicos = servicos;
+        }
+
+        public Set<OrdemDeServico> getOrdemDeServicos() {
+            return ordemDeServicos;
+        }
+
+        public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
+            this.ordemDeServicos = ordemDeServicos;
+        }
+        
 }

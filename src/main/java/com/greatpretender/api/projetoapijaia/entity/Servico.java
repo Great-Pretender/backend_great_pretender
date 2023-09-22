@@ -1,6 +1,5 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
-import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,8 +13,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table (name = "servico")
 public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,10 +43,8 @@ public class Servico {
     @JsonIgnore
     private Set<Produto> produtos;
 
-    @OneToMany(mappedBy = "servicood", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<SrvOrdemDeServico> srvOrdemDeServicos;
-
+    @OneToMany(mappedBy = "atribuicao_ordem_servico")
+    private Set<AtribuicaoOrdemServico> atribuicoes;
 
     public Servico() {}
 
@@ -96,4 +95,23 @@ public class Servico {
     public void setDuracao_dias(String duracao_dias) {
         this.duracao_dias = duracao_dias;
     }
+
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public Set<AtribuicaoOrdemServico> getAtribuicoes() {
+        return atribuicoes;
+    }
+
+    public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
+        this.atribuicoes = atribuicoes;
+    }
+
+    
+    
 }

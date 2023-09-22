@@ -1,5 +1,7 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,6 +36,7 @@ public class Produto {
     private String validade;
     
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinColumn(name = "fk_servico")
     private Servico servico;
 

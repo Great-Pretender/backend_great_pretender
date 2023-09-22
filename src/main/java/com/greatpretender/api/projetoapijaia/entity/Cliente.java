@@ -1,8 +1,6 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +9,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table (name = "cliente")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Cliente {
     private String cnpj;
 
     @Column(name = "nome_responsavel")
-    private String nome;
+    private String nome_responsavel;
 
     @Column(name = "nome_fantasia")
     private String nome_fantasia;
@@ -46,21 +46,16 @@ public class Cliente {
     @Column(name = "estado")
     private String estado;
 
-    @OneToMany(mappedBy = "ordemsrv", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<OrdemDeServico> ordemDeServicos;
-
-    @OneToMany(mappedBy = "servicood", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<SrvOrdemDeServico> srvOrdemDeServicos;
+    @OneToMany(mappedBy = "ordem_de_servico", fetch = FetchType.LAZY)
+    private Set<OrdemDeServico> ordemDeServicos;
 
 
     public Cliente() {}
 
-        public Cliente(String cnpj, String nome, String nome_fantasia, String email, String cep, String endereco, String bairro, String cidade, String estado) {
+        public Cliente(String cnpj, String nome_responsavel, String nome_fantasia, String email, String cep, String endereco, String bairro, String cidade, String estado) {
             this();
             this.cnpj = cnpj;
-            this.nome = nome;
+            this.nome_responsavel = nome_responsavel;
             this.nome_fantasia = nome_fantasia;
             this.email = email;
             this.cep = cep;
@@ -86,12 +81,12 @@ public class Cliente {
             this.cnpj = cnpj;
         }
 
-        public String getNome() {
-            return nome;
+        public String getNome_responsavel() {
+            return nome_responsavel;
         }
 
-        public void setNome(String nome) {
-            this.nome = nome;
+        public void setNome_responsavel(String nome_responsavel) {
+            this.nome_responsavel = nome_responsavel;
         }
 
         public String getNome_fantasia() {
@@ -122,7 +117,7 @@ public class Cliente {
             return endereco;
         }
 
-        public void setendereco(String endereco) {
+        public void setEndereco(String endereco) {
             this.endereco = endereco;
         }
 
@@ -149,4 +144,14 @@ public class Cliente {
         public void setEstado(String estado) {
             this.estado = estado;
         }
+
+        public Set<OrdemDeServico> getOrdemDeServicos() {
+            return ordemDeServicos;
+        }
+
+        public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
+            this.ordemDeServicos = ordemDeServicos;
+        }
+
+        
 }
