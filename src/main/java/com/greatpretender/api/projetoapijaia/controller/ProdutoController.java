@@ -7,17 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.greatpretender.api.projetoapijaia.entity.Produto;
 import com.greatpretender.api.projetoapijaia.service.IProdutoService;
 
+@RestController
+@RequestMapping("/produto")
 public class ProdutoController {
    @Autowired
    private IProdutoService service;
 
    @GetMapping
    public List<Produto> buscarTodos() {
-        return service.buscarTodos();
+        return service.buscarTodosProdutos();
    }
 
    @GetMapping(value = "/{produto}")

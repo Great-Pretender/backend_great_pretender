@@ -1,5 +1,6 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,18 +25,16 @@ public class Setor {
     @Column(name = "nome")
     private String nome;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
     private Set<Usuario> usuarios;
 
-    @OneToMany(mappedBy = "servico", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
     private Set<Servico> servicos;
 
-    @OneToMany(mappedBy = "ordem_de_servico", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
     private Set<OrdemDeServico> ordemDeServicos;
 
-
-    public Setor() {}
+        public Setor(){}
 
         public Setor(String nome) {
             this();
@@ -73,5 +72,14 @@ public class Setor {
         public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
             this.ordemDeServicos = ordemDeServicos;
         }
+
+        public Set<Usuario> getUsuarios() {
+            return usuarios;
+        }
+
+        public void setUsuarios(Set<Usuario> usuarios) {
+            this.usuarios = usuarios;
+        }
+        
         
 }

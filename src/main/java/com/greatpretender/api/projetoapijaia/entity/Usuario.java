@@ -2,7 +2,10 @@ package com.greatpretender.api.projetoapijaia.entity;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +21,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -30,7 +34,6 @@ public class Usuario {
     private String nome;
 
     @Column(name = "senha")
-    @JsonIgnore
     private String senha;
 
     @Column(name = "email")
@@ -40,7 +43,7 @@ public class Usuario {
     @JoinColumn(name = "fk_setor")
     private Setor setor;
 
-    @OneToMany(mappedBy = "ordem_de_servico", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private Set<OrdemDeServico> ordemDeServicos;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
@@ -97,6 +100,7 @@ public class Usuario {
             this.email = email;
         }
 
+        
         public Set<OrdemDeServico> getOrdemDeServicos() {
             return ordemDeServicos;
         }
@@ -111,6 +115,14 @@ public class Usuario {
 
         public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
             this.atribuicoes = atribuicoes;
+        }
+
+        public Setor getSetor() {
+            return setor;
+        }
+
+        public void setSetor(Setor setor) {
+            this.setor = setor;
         }
 
         

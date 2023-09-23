@@ -9,5 +9,6 @@ public interface ISetorService {
     
     public Setor buscarPorId(Long id);
     public Setor novoSetor(Setor setor);
-    public List<Setor> buscarTodos();
+    public List<Setor> buscarTodosSetores();
+  
 }

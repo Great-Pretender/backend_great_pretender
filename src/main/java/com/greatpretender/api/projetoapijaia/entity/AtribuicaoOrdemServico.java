@@ -1,5 +1,6 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -34,4 +35,53 @@ public class AtribuicaoOrdemServico {
     @JsonIgnore
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "fk_ordem_de_servico")
+    private OrdemDeServico ordem;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getStatus_andamento() {
+        return status_andamento;
+    }
+
+    public void setStatus_andamento(String status_andamento) {
+        this.status_andamento = status_andamento;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+
+   
+  
 }

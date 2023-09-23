@@ -26,7 +26,7 @@ public class ClienteService implements IClienteService {
     public Cliente novoCliente(Cliente cliente) {
         if(cliente == null  ||
                 cliente.getCnpj() == null  ||
-                cliente.getNome() == null  ||
+                cliente.getNome_responsavel() == null  ||
                 cliente.getNome_fantasia() == null  ||
                 cliente.getEmail() == null  ||
                 cliente.getCep() == null  ||

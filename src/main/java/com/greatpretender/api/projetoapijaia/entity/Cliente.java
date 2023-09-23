@@ -46,9 +46,6 @@ public class Cliente {
     @Column(name = "estado")
     private String estado;
 
-    @OneToMany(mappedBy = "ordem_de_servico", fetch = FetchType.LAZY)
-    private Set<OrdemDeServico> ordemDeServicos;
-
 
     public Cliente() {}
 
@@ -145,13 +142,6 @@ public class Cliente {
             this.estado = estado;
         }
 
-        public Set<OrdemDeServico> getOrdemDeServicos() {
-            return ordemDeServicos;
-        }
-
-        public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
-            this.ordemDeServicos = ordemDeServicos;
-        }
 
         
 }

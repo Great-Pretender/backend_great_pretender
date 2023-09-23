@@ -7,5 +7,5 @@ import com.greatpretender.api.projetoapijaia.entity.Produto;
 public interface IProdutoService {
     public Produto buscarPorId(Long id);
     public Produto novoProduto(Produto produto);
-    public List<Produto> buscarTodos();
+    public List<Produto> buscarTodosProdutos();
 }

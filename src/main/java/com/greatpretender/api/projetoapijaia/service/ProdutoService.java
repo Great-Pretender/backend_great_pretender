@@ -30,12 +30,12 @@ public class ProdutoService implements IProdutoService {
                 Produto.getMarca() == null  ||
                 Produto.getModelo() == null  ||
                 Produto.getValidade() == null ) {
-            throw new IllegalArgumentException("Nome inválido!");
+            throw new IllegalArgumentException("Dados inválidos!");
         }
         return produtoRepo.save(Produto);
     }
 
-    public List<Produto> buscarTodos() {
+    public List<Produto> buscarTodosProdutos() {
         return produtoRepo.findAll();
     }
 }

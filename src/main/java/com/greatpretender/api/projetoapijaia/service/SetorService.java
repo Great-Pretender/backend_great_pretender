@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Setor;
+import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.repository.SetorRepository;
+import com.greatpretender.api.projetoapijaia.repository.UsuarioRepository;
 
 
 
@@ -16,6 +18,7 @@ public class SetorService implements ISetorService{
     @Autowired
     private SetorRepository setorRepo;
 
+    
     public Setor buscarPorId(Long id) {
         Optional<Setor> setorOp = setorRepo.findById(id);
         if (setorOp.isPresent()) {
@@ -32,7 +35,10 @@ public class SetorService implements ISetorService{
         return setorRepo.save(setor);
     }
 
-    public List<Setor> buscarTodos() {
+    // Lista todos dos sertores
+    public List<Setor> buscarTodosSetores() {
         return (List<Setor>) setorRepo.findAll();
     }
+
+
 }

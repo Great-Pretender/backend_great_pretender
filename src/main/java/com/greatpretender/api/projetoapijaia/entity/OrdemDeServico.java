@@ -1,6 +1,8 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -11,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -40,6 +43,9 @@ public class OrdemDeServico {
     @JsonIgnore
     @JoinColumn(name = "fk_cliente")
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "ordem")
+    private Set<AtribuicaoOrdemServico> atribuicoes;
 
         public OrdemDeServico(String descricao, String status_ordem) {
             this();
@@ -97,4 +103,8 @@ public class OrdemDeServico {
         public void setCliente(Cliente cliente) {
             this.cliente = cliente;
         }
+
+       
+
+        
 }

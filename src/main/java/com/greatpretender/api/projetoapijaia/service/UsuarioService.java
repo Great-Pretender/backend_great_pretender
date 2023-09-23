@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.repository.UsuarioRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UsuarioService implements IUsuarioService{
     @Autowired
@@ -22,16 +24,26 @@ public class UsuarioService implements IUsuarioService{
         throw new IllegalArgumentException("Id inválido!");
     }
 
+    @Transactional
     public Usuario novoUsuario(Usuario usuario) {
-        if(usuario == null  ||
-                usuario.getNome() == null  ||
-                usuario.getSenha() == null) {
-            throw new IllegalArgumentException("Nome e Senha inválidos!");
+        
+        if(usuario == null ||
+                usuario.getCpf() == null ||
+                usuario.getCpf().isBlank() ||
+                usuario.getNome() == null ||
+                usuario.getNome().isBlank() ||
+                usuario.getSenha() == null ||
+                usuario.getSenha().isBlank() ||
+                usuario.getEmail() == null ||
+                usuario.getEmail().isBlank() 
+                ) {
+            
+            throw new IllegalArgumentException("Dados inválidos!");
         }
         return usuarioRepo.save(usuario);
     }
 
-    public List<Usuario> buscarTodos() {
+    public List<Usuario> buscarTodosUsuarios() {
         return usuarioRepo.findAll();
     }
 }

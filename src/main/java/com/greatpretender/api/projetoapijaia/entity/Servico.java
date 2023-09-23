@@ -35,25 +35,29 @@ public class Servico {
     @Column(name = "duracao_dias")
     private String duracao_dias;
 
+    @Column(name = "custo")
+    private String custo;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_setor")
     private Setor setor;
     
-    @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "servico")
     private Set<Produto> produtos;
 
-    @OneToMany(mappedBy = "atribuicao_ordem_servico")
+    @OneToMany(mappedBy = "servico")
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
     public Servico() {}
 
-    public Servico(String nome, String descricao, String risco, String duracao_dias) {
+    public Servico(String nome, String descricao, String risco, String duracao_dias, String custo) {
         this();
         this.nome = nome;
         this.descricao = descricao;
         this.risco = risco;
         this.duracao_dias = duracao_dias;
+        this.custo = custo;
+
     }
 
     public Long getId() {
@@ -95,11 +99,20 @@ public class Servico {
     public void setDuracao_dias(String duracao_dias) {
         this.duracao_dias = duracao_dias;
     }
+    
+
+    public String getCusto() {
+        return custo;
+    }
+
+    public void setCusto(String custo) {
+        this.custo = custo;
+    }
 
     public Set<Produto> getProdutos() {
         return produtos;
     }
-
+    
     public void setProdutos(Set<Produto> produtos) {
         this.produtos = produtos;
     }
@@ -111,7 +124,5 @@ public class Servico {
     public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
         this.atribuicoes = atribuicoes;
     }
-
-    
     
 }
