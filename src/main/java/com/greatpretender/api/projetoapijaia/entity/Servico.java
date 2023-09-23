@@ -1,5 +1,6 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,12 +44,17 @@ public class Servico {
     private Setor setor;
     
     @OneToMany(mappedBy = "servico")
+    @JsonIgnore
     private Set<Produto> produtos;
 
     @OneToMany(mappedBy = "servico")
+    @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
-    public Servico() {}
+    public Servico() {
+        this.produtos = new HashSet<Produto>();
+        this.atribuicoes = new HashSet<AtribuicaoOrdemServico>();
+    }
 
     public Servico(String nome, String descricao, String risco, String duracao_dias, String custo) {
         this();
@@ -123,6 +129,14 @@ public class Servico {
 
     public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
         this.atribuicoes = atribuicoes;
+    }
+
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
     }
     
 }

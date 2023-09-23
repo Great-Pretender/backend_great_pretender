@@ -34,7 +34,7 @@ public class ServicoService implements IServicoService {
                 servico.getDuracao_dias() == null 
                 ) {
             
-            throw new IllegalArgumentException("Verificar Dados: ");
+            throw new IllegalArgumentException("Verificar Dados!");
         }
         
         return servicoRepo.save(servico);

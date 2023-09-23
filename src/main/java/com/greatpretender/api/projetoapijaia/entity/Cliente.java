@@ -1,6 +1,9 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
+import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,8 +49,14 @@ public class Cliente {
     @Column(name = "estado")
     private String estado;
 
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<OrdemDeServico> ordens;
 
-    public Cliente() {}
+    public Cliente() {
+        this.ordens = new HashSet<OrdemDeServico>();
+
+    }
 
         public Cliente(String cnpj, String nome_responsavel, String nome_fantasia, String email, String cep, String endereco, String bairro, String cidade, String estado) {
             this();
@@ -142,6 +151,14 @@ public class Cliente {
             this.estado = estado;
         }
 
+        public Set<OrdemDeServico> getOrdens() {
+            return ordens;
+        }
 
+        public void setOrdens(Set<OrdemDeServico> ordens) {
+            this.ordens = ordens;
+        }
+
+        
         
 }

@@ -1,5 +1,7 @@
 package com.greatpretender.api.projetoapijaia.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,21 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.greatpretender.api.projetoapijaia.entity.Cliente;
 import com.greatpretender.api.projetoapijaia.repository.ClienteRepository;
+import com.greatpretender.api.projetoapijaia.service.IClienteService;
 
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
-    
+    @Autowired
+    private IClienteService service;
+
     @Autowired
     private ClienteRepository repositorio_cliente;
 
-    @GetMapping("/listar")
-    public Iterable<Cliente> listar(){
-        return repositorio_cliente.findAll();
+    @GetMapping
+    public List<Cliente> buscarTodosClientes() {
+         return service.buscarTodosClientes();
     }
 
-    @PostMapping("/cadastrar")
-    public Cliente cadastar(@RequestBody Cliente obj){
-        return repositorio_cliente.save(obj);
+    @PostMapping
+    public Cliente cadastar(@RequestBody Cliente cliente){
+        return repositorio_cliente.save(cliente);
     }
 }

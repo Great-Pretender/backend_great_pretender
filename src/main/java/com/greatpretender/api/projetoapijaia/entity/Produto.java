@@ -36,7 +36,6 @@ public class Produto {
     private String validade;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
     @JoinColumn(name = "fk_servico")
     private Servico servico;
 
@@ -99,4 +98,13 @@ public class Produto {
         public void setValidade(String validade) {
             this.validade = validade;
         }
+
+        public Servico getServico() {
+            return servico;
+        }
+
+        public void setServico(Servico servico) {
+            this.servico = servico;
+        }
+        
 }

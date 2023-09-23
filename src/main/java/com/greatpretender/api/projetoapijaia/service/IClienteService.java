@@ -8,5 +8,5 @@ public interface IClienteService {
     
     public Cliente buscarPorId(Long id);
     public Cliente novoCliente(Cliente cliente);
-    public List<Cliente> buscarTodos();
+    public List<Cliente> buscarTodosClientes();
 }

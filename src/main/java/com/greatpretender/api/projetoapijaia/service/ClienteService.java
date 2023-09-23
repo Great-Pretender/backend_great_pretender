@@ -39,7 +39,7 @@ public class ClienteService implements IClienteService {
         return clienteRepo.save(cliente);
     }
 
-    public List<Cliente> buscarTodos() {
+    public List<Cliente> buscarTodosClientes() {
         return clienteRepo.findAll();
     }
 }

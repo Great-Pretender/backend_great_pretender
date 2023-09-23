@@ -26,20 +26,31 @@ public class Setor {
     private String nome;
 
     @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Usuario> usuarios;
 
     @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Servico> servicos;
 
     @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<OrdemDeServico> ordemDeServicos;
 
-        public Setor(){}
+        public Setor() {
+        this.usuarios = new HashSet<Usuario>();
+        this.servicos = new HashSet<Servico>();
+        this.ordemDeServicos = new HashSet<OrdemDeServico>();
+        
+    }
 
         public Setor(String nome) {
             this();
             this.nome = nome;
         }
+
+        
+
 
         public Long getId() {
             return id;
