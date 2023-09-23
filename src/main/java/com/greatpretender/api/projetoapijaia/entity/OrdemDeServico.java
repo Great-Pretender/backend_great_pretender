@@ -31,7 +31,6 @@ public class OrdemDeServico {
     private String status_ordem;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
@@ -40,7 +39,6 @@ public class OrdemDeServico {
     private Setor setor;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
     @JoinColumn(name = "fk_cliente")
     private Cliente cliente;
 

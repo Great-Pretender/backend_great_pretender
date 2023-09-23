@@ -2,10 +2,7 @@ package com.greatpretender.api.projetoapijaia.entity;
 
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,9 +41,11 @@ public class Usuario {
     private Setor setor;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<OrdemDeServico> ordemDeServicos;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
 
