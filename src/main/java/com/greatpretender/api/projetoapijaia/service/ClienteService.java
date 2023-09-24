@@ -42,4 +42,15 @@ public class ClienteService implements IClienteService {
     public List<Cliente> buscarTodosClientes() {
         return clienteRepo.findAll();
     }
+
+    public Cliente deletarPorId(Long id){
+        Optional<Cliente> clienteOp = clienteRepo.findById(id);
+        if(clienteOp.isPresent()){
+            
+            clienteRepo.deleteById(id);
+            return clienteOp.get();
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
+
 }

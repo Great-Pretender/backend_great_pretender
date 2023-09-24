@@ -43,4 +43,14 @@ public class ServicoService implements IServicoService {
     public List<Servico> buscarTodosServicos() {
         return servicoRepo.findAll();
     }
+
+    public Servico deletarPorId(Long id){
+        Optional<Servico> servicoOp = servicoRepo.findById(id);
+        if(servicoOp.isPresent()){
+            
+            servicoRepo.deleteById(id);
+            return servicoOp.get();
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
 }

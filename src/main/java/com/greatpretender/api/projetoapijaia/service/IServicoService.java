@@ -7,8 +7,8 @@ import com.greatpretender.api.projetoapijaia.entity.Servico;
 public interface IServicoService {
     
     public Servico buscarPorId(Long id);
-
     public Servico novoServico(Servico servico);
-
     public List<Servico> buscarTodosServicos();
+    public Servico deletarPorId(Long id);
+
 }

@@ -37,4 +37,14 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
     public List<OrdemDeServico> buscarTodasOrdensDeServico(){
         return(List<OrdemDeServico>) ordemRepo.findAll();
     }
+
+    public OrdemDeServico deletarPorId(Long id){
+        Optional<OrdemDeServico> ordemDeServicoOp = ordemRepo.findById(id);
+        if(ordemDeServicoOp.isPresent()){
+            
+            ordemRepo.deleteById(id);
+            return ordemDeServicoOp.get();
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
 }

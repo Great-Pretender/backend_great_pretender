@@ -38,4 +38,14 @@ public class ProdutoService implements IProdutoService {
     public List<Produto> buscarTodosProdutos() {
         return produtoRepo.findAll();
     }
+
+    public Produto deletarPorId(Long id){
+        Optional<Produto> produtoOP = produtoRepo.findById(id);
+        if(produtoOP.isPresent()){
+            
+            produtoRepo.deleteById(id);
+            return produtoOP.get();
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
 }

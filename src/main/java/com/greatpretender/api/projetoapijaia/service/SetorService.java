@@ -38,5 +38,16 @@ public class SetorService implements ISetorService{
         return (List<Setor>) setorRepo.findAll();
     }
 
+    public Setor deletarPorId(Long id){
+        Optional<Setor> setorOp = setorRepo.findById(id);
+        if(setorOp.isPresent()){
+            
+            setorRepo.deleteById(id);
+            return setorOp.get();
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
+
+
 
 }

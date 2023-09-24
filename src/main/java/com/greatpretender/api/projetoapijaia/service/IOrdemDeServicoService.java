@@ -8,4 +8,6 @@ public interface IOrdemDeServicoService {
     public OrdemDeServico buscarPorId(Long id);
     public OrdemDeServico novaOrdemDeServico(OrdemDeServico ordemDeServico);
     public List<OrdemDeServico> buscarTodasOrdensDeServico();
+    public OrdemDeServico deletarPorId(Long id);
+
 }

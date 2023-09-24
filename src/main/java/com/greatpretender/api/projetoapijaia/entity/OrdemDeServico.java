@@ -43,6 +43,7 @@ public class OrdemDeServico {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "ordem")
+    @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
         public OrdemDeServico(String descricao, String status_ordem) {

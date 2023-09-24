@@ -8,4 +8,5 @@ public interface IAtribuicaoOrdemDeServico {
     public AtribuicaoOrdemServico buscarPorId(Long id);
     public AtribuicaoOrdemServico novaAtribuicaoOrdemDeServico(AtribuicaoOrdemServico atribuicaoOrdemDeServico);
     public List<AtribuicaoOrdemServico> buscarTodasAtribuicoesOrdensDeServico();
+    public AtribuicaoOrdemServico deletarPorId(Long id);
 }

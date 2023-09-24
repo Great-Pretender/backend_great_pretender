@@ -46,4 +46,14 @@ public class UsuarioService implements IUsuarioService{
     public List<Usuario> buscarTodosUsuarios() {
         return usuarioRepo.findAll();
     }
+
+    public Usuario deletarPorId(Long id){
+        Optional<Usuario> usuarioOp = usuarioRepo.findById(id);
+        if(usuarioOp.isPresent()){
+            
+            usuarioRepo.deleteById(id);
+            return usuarioOp.get();
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
 }

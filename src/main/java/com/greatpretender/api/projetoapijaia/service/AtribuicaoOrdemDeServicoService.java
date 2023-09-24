@@ -36,4 +36,17 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
     public List<AtribuicaoOrdemServico> buscarTodasAtribuicoesOrdensDeServico(){
         return(List<AtribuicaoOrdemServico>) atribuicaoRepo.findAll();
     }
+
+    public AtribuicaoOrdemServico deletarPorId(Long id){
+        Optional<AtribuicaoOrdemServico> atribuicaoOrdemDeServicoOp = atribuicaoRepo.findById(id);
+        if(atribuicaoOrdemDeServicoOp.isPresent()){
+            
+            atribuicaoRepo.deleteById(id);
+            return atribuicaoOrdemDeServicoOp.get();
+
+
+        }
+        throw new IllegalArgumentException("ID inválido!");
+    }
+
 }

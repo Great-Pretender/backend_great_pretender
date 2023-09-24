@@ -9,4 +9,6 @@ public interface IClienteService {
     public Cliente buscarPorId(Long id);
     public Cliente novoCliente(Cliente cliente);
     public List<Cliente> buscarTodosClientes();
+    public Cliente deletarPorId(Long id);
+
 }

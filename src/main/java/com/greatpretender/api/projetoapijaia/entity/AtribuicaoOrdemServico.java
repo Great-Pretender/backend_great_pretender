@@ -27,17 +27,14 @@ public class AtribuicaoOrdemServico {
     private String status_andamento;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "fk_servico")
     private Servico servico;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "fk_ordem_de_servico")
     private OrdemDeServico ordem;
 
@@ -79,6 +76,14 @@ public class AtribuicaoOrdemServico {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public OrdemDeServico getOrdem() {
+        return ordem;
+    }
+
+    public void setOrdem(OrdemDeServico ordem) {
+        this.ordem = ordem;
     }
     
 

@@ -8,4 +8,6 @@ public interface IProdutoService {
     public Produto buscarPorId(Long id);
     public Produto novoProduto(Produto produto);
     public List<Produto> buscarTodosProdutos();
+    public Produto deletarPorId(Long id);
+
 }
