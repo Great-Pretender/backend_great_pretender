@@ -15,6 +15,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table (name = "atribuicao_ordem_servico")
 public class AtribuicaoOrdemServico {
+
+    public AtribuicaoOrdemServico(){
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

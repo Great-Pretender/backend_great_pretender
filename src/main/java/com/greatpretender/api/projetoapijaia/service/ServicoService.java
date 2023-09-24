@@ -24,6 +24,15 @@ public class ServicoService implements IServicoService {
         }
         throw new IllegalArgumentException("Id inválido!");
     }
+
+    
+    public Servico buscarPorNome(String nome) {
+        Optional<Servico> servicoOp = servicoRepo.findByNome(nome);
+        if (servicoOp.isPresent()) {
+            return servicoOp.get();
+        }
+        throw new IllegalArgumentException("Id inválido!");
+    }
     @Transactional
     public Servico novoServico(Servico servico) {
         if(servico == null  ||

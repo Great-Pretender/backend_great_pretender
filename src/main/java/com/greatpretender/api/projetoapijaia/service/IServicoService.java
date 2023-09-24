@@ -10,5 +10,5 @@ public interface IServicoService {
     public Servico novoServico(Servico servico);
     public List<Servico> buscarTodosServicos();
     public Servico deletarPorId(Long id);
-
+    public Servico buscarPorNome(String nome);
 }
