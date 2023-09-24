@@ -24,9 +24,9 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
     }
 
     public AtribuicaoOrdemServico novaAtribuicaoOrdemDeServico(AtribuicaoOrdemServico atribuicaoOrdemServico) {
-        if(atribuicaoOrdemServico == null ||
-            atribuicaoOrdemServico.getStatus_andamento() == null
-           ){
+        if(atribuicaoOrdemServico.getUsuario() == null ||
+            atribuicaoOrdemServico.getServico() == null
+           ){ 
             throw new IllegalArgumentException("Dados inválidos!");
            }
            return atribuicaoRepo.save(atribuicaoOrdemServico);
