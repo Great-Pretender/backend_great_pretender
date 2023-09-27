@@ -53,6 +53,10 @@ public class Cliente {
     @JsonIgnore
     private Set<OrdemDeServico> ordens;
 
+    @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
+    private Set<Contrato> contratos;
+
     public Cliente() {
         this.ordens = new HashSet<OrdemDeServico>();
 

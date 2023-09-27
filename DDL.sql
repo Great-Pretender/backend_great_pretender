@@ -93,3 +93,4 @@ CREATE TABLE atribuicao_ordem_servico (
   CONSTRAINT fk_atribuicao_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario (id),
   CONSTRAINT fk_atribuicao_ordem_de_servico FOREIGN KEY (fk_ordem_de_servico) REFERENCES ordem_de_servico (id)
   );
+
