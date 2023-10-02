@@ -16,6 +16,8 @@ CREATE TABLE cliente (
   cnpj varchar(18) NOT NULL,
   nome_responsavel varchar(100) NOT NULL,
   nome_fantasia varchar(50) NOT NULL,
+  telefone1 varchar(11) NOT NULL,
+  telefone2 varchar(11),
   email varchar(50) NOT NULL,
   cep varchar(9) NOT NULL,
   endereco varchar(50) NOT NULL,
@@ -24,6 +26,29 @@ CREATE TABLE cliente (
   estado varchar(25) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY cnpj_unique (cnpj)
+);
+
+CREATE TABLE contrato (
+  id bigint NOT NULL,
+  numero_contrato bigint NOT NULL,
+  valor_contrato int NOT NULL,
+  valor_multa int NOT NULL,
+  inicio_contrato date NOT NULL,
+  fim_contrato date NOT NULL,
+  detalhes_pagamento varchar(50) NOT NULL,
+  tempo_prorrogacao varchar(45) DEFAULT NULL,
+  descricao_contrato varchar(500) DEFAULT NULL,
+  clausulas_contrato varchar(500) DEFAULT NULL,
+  cliente_id bigint NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_contrato_cliente FOREIGN KEY (cliente_id) REFERENCES cliente (id)
+) ;
+
+CREATE TABLE laudo (
+  laudo_ID bigint NOT NULL AUTO_INCREMENT,
+  cliente_id bigint NOT NULL,
+  PRIMARY KEY (laudo_ID),
+  CONSTRAINT fk_laudo_cliente FOREIGN KEY (cliente_id) REFERENCES cliente (id)
 );
 
 CREATE TABLE setor (
