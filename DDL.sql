@@ -29,10 +29,10 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE contrato (
-  id bigint NOT NULL,
+  id bigint NOT NULL AUTO_INCREMENT,
   numero_contrato bigint NOT NULL,
-  valor_contrato int NOT NULL,
-  valor_multa int NOT NULL,
+  valor_contrato float(9,2) NOT NULL,
+  valor_multa float(9,2) NOT NULL,
   inicio_contrato date NOT NULL,
   fim_contrato date NOT NULL,
   detalhes_pagamento varchar(50) NOT NULL,
@@ -119,16 +119,16 @@ CREATE TABLE atribuicao_ordem_servico (
   CONSTRAINT fk_atribuicao_ordem_de_servico FOREIGN KEY (fk_ordem_de_servico) REFERENCES ordem_de_servico (id)
   );
 
-CREATE TABLE contrato(
-  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  numero_contrato BIGINT,
-  valor_contrato FLOAT(9,2),
-  valor_multa FLOAT(9,2),
-  inicio_contrato DATE,
-  fim_contrato DATE,
-  detalhes_pagamento VARCHAR(500),
-  tempo_prorrogacao  VARCHAR(500),
-  clausulas_contrato  VARCHAR(500),
-  fk_cliente BIGINT,
-  CONSTRAINT fk_contrato_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente(id)
-)
+-- CREATE TABLE contrato(
+--   id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   numero_contrato BIGINT,
+--   valor_contrato FLOAT(9,2),
+--   valor_multa FLOAT(9,2),
+--   inicio_contrato DATE,
+--   fim_contrato DATE,
+--   detalhes_pagamento VARCHAR(500),
+--   tempo_prorrogacao  VARCHAR(500),
+--   clausulas_contrato  VARCHAR(500),
+--   fk_cliente BIGINT,
+--   CONSTRAINT fk_contrato_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente(id)
+-- )

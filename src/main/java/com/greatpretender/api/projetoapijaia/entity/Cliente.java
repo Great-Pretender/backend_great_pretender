@@ -31,6 +31,12 @@ public class Cliente {
     @Column(name = "nome_fantasia")
     private String nome_fantasia;
 
+    @Column(name = "telefone1")
+    private String telefone1;
+
+    @Column(name = "telefone2")
+    private String telefone2;
+
     @Column(name = "email")
     private String email;
 
@@ -62,12 +68,14 @@ public class Cliente {
 
     }
 
-        public Cliente(String cnpj, String nome_responsavel, String nome_fantasia, String email, String cep, String endereco, String bairro, String cidade, String estado) {
+        public Cliente(String cnpj, String nome_responsavel, String nome_fantasia, String email, String cep, String endereco, String bairro, String cidade, String estado, String telefone1, String telefone2) {
             this();
             this.cnpj = cnpj;
             this.nome_responsavel = nome_responsavel;
             this.nome_fantasia = nome_fantasia;
             this.email = email;
+            this.telefone1 = telefone1;
+            this.telefone2 = telefone2;
             this.cep = cep;
             this.endereco = endereco;
             this.bairro = bairro;
@@ -163,6 +171,22 @@ public class Cliente {
             this.ordens = ordens;
         }
 
+        public String getTelefone1() {
+            return telefone1;
+        }
+
+        public void setTelefone1(String telefone1) {
+            this.telefone1 = telefone1;
+        }
+
+        public String getTelefone2() {
+            return telefone2;
+        }
+
+        public void setTelefone2(String telefone2) {
+            this.telefone2 = telefone2;
+        }
+        
         
         
 }

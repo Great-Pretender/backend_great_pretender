@@ -1,7 +1,8 @@
 package com.greatpretender.api.projetoapijaia.entity;
 import jakarta.persistence.GenerationType;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,10 +31,10 @@ public class Contrato {
     private Float valor_multa;
 
     @Column(name = "inicio_contrato")
-    private Date inicio_contrato;
+    private LocalDate inicio_contrato;
 
     @Column(name = "fim_contrato")
-    private Date fim_contrato;
+    private LocalDate fim_contrato;
 
     @Column(name = "detalhes_pagamento")
     private String detalhes_pagamento;
@@ -45,13 +46,13 @@ public class Contrato {
     private String clausulas_contrato;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_cliente")
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Contrato() {}
 
-    public Contrato(Long numero_contrato, Float valor_contrato, Float valor_multa, Date inicio_contrato,
-            Date fim_contrato, String detalhes_pagamento, String tempo_prorrogacao, String clausulas_contrato) {
+    public Contrato(Long numero_contrato, Float valor_contrato, Float valor_multa, LocalDate inicio_contrato,
+    LocalDate fim_contrato, String detalhes_pagamento, String tempo_prorrogacao, String clausulas_contrato) {
         this.numero_contrato = numero_contrato;
         this.valor_contrato = valor_contrato;
         this.valor_multa = valor_multa;
@@ -86,19 +87,19 @@ public class Contrato {
         this.valor_multa = valor_multa;
     }
 
-    public Date getInicio_contrato() {
+    public LocalDate getInicio_contrato() {
         return inicio_contrato;
     }
 
-    public void setInicio_contrato(Date inicio_contrato) {
+    public void setInicio_contrato(LocalDate inicio_contrato) {
         this.inicio_contrato = inicio_contrato;
     }
 
-    public Date getFim_contrato() {
+    public LocalDate getFim_contrato() {
         return fim_contrato;
     }
 
-    public void setFim_contrato(Date fim_contrato) {
+    public void setFim_contrato(LocalDate    fim_contrato) {
         this.fim_contrato = fim_contrato;
     }
 
