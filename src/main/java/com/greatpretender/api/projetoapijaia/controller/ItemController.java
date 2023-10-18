@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatpretender.api.projetoapijaia.entity.Produto;
-import com.greatpretender.api.projetoapijaia.service.IProdutoService;
+import com.greatpretender.api.projetoapijaia.entity.Item;
+import com.greatpretender.api.projetoapijaia.service.IItemService;
 
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/item")
 @CrossOrigin
-public class ProdutoController {
+public class ItemController {
    @Autowired
-   private IProdutoService service;
+   private IItemService service;
 
    @GetMapping
-   public List<Produto> buscarTodos() {
-        return service.buscarTodosProdutos();
+   public List<Item> buscarTodos() {
+        return service.buscarTodosItems();
    }
    @PostMapping
-   public Produto novoProduto(@RequestBody Produto produto) {
-        return service.novoProduto(produto);
+   public Item novoItem(@RequestBody Item item) {
+        return service.novoItem(item);
    }
    
-   @GetMapping(value = "/{produto}")
-   public Produto buscarPorId(@PathVariable("produto") Long id) {
+   @GetMapping(value = "/{item}")
+   public Item buscarPorId(@PathVariable("item") Long id) {
         return service.buscarPorId(id);
    }
 
    // Função para deletar produto por id
    @DeleteMapping(value = "/{produto}")
-   public Produto deleteProduto(@PathVariable("produto") Long id) {
+   public Item deleteItem(@PathVariable("produto") Long id) {
      return service.deletarPorId(id);
    }
 
    @PutMapping("/{produto}")
-   public Produto editproduto(@RequestBody Produto produto){
-     return service.novoProduto(produto);
+   public Item editproduto(@RequestBody Item item){
+     return service.novoItem(item);
     }
 
 }

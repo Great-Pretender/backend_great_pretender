@@ -39,11 +39,13 @@ public class UsuarioService implements IUsuarioService{
                 usuario.getCpf() == null ||
                 usuario.getCpf().isBlank() ||
                 usuario.getNome() == null ||
+                usuario.getSetor() == null ||
+                usuario.getCargo() == null ||
                 usuario.getNome().isBlank() ||
                 usuario.getSenha() == null ||
                 usuario.getSenha().isBlank() ||
                 usuario.getEmail() == null ||
-                usuario.getEmail().isBlank() 
+                usuario.getEmail().isBlank()
                 ) {
             
             throw new IllegalArgumentException("Dados inválidos!");

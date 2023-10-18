@@ -19,11 +19,11 @@ CREATE TABLE cliente (
   telefone1 varchar(11) NOT NULL,
   telefone2 varchar(11),
   email varchar(50) NOT NULL,
-  cep varchar(9) NOT NULL,
-  endereco varchar(50) NOT NULL,
-  bairro varchar(30) NOT NULL,
-  cidade varchar(30) NOT NULL,
-  estado varchar(25) NOT NULL,
+  cep varchar(9),
+  endereco varchar(50) ,
+  bairro varchar(30) ,
+  cidade varchar(30) ,
+  estado varchar(25),
   PRIMARY KEY (id),
   UNIQUE KEY cnpj_unique (cnpj)
 );
@@ -63,6 +63,7 @@ CREATE TABLE usuario (
   nome varchar(100) NOT NULL,
   senha varchar(20) NOT NULL,
   email varchar(50) NOT NULL,
+  cargo varchar(50),
   fk_setor bigint,
   PRIMARY KEY (id),
   UNIQUE KEY cpf_unique (cpf),
@@ -71,8 +72,11 @@ CREATE TABLE usuario (
 
 CREATE TABLE ordem_de_servico (
   id bigint NOT NULL AUTO_INCREMENT,
-  descricao varchar(500) DEFAULT NULL,
-  status_ordem varchar(15) DEFAULT NULL,
+  descricao varchar(500) ,
+  status_ordem varchar(15),
+  status_aprovacao varchar(20),
+  data_inicio date,
+  data_fim date,
   fk_usuario bigint,
   fk_setor bigint,
   fk_cliente bigint,
@@ -94,7 +98,7 @@ CREATE TABLE servico (
   CONSTRAINT FOREIGN KEY fk_usuario_setor (fk_setor) REFERENCES setor(id)
 );
 
-CREATE TABLE produto (
+CREATE TABLE item (
   id bigint NOT NULL AUTO_INCREMENT,
   nome varchar(100) DEFAULT NULL,
   setor varchar(40) DEFAULT NULL,

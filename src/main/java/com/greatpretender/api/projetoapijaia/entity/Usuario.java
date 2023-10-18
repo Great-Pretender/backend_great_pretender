@@ -36,6 +36,9 @@ public class Usuario {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "cargo")
+    private String cargo;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_setor")
     private Setor setor;
@@ -51,12 +54,13 @@ public class Usuario {
 
     public Usuario() { }
 
-        public Usuario(String cpf, String nome, String senha, String email) {
+        public Usuario(String cpf, String nome, String senha, String email, String cargo) {
             this();
             this.cpf = cpf;
             this.nome = nome;
             this.senha = senha;
             this.email = email;
+            this.cargo = cargo;
         }
 
         public Long getId() {
@@ -122,6 +126,14 @@ public class Usuario {
 
         public void setSetor(Setor setor) {
             this.setor = setor;
+        }
+
+        public String getCargo() {
+            return cargo;
+        }
+
+        public void setCargo(String cargo) {
+            this.cargo = cargo;
         }
 
         

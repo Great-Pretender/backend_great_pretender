@@ -45,14 +45,14 @@ public class Servico {
     
     @OneToMany(mappedBy = "servico")
     @JsonIgnore
-    private Set<Produto> produtos;
+    private Set<Item> items;
 
     @OneToMany(mappedBy = "servico")
     @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
     public Servico() {
-        this.produtos = new HashSet<Produto>();
+        this.items = new HashSet<Item>();
         this.atribuicoes = new HashSet<AtribuicaoOrdemServico>();
     }
 
@@ -115,12 +115,12 @@ public class Servico {
         this.custo = custo;
     }
 
-    public Set<Produto> getProdutos() {
-        return produtos;
+    public Set<Item> getItems() {
+        return items;
     }
     
-    public void setProdutos(Set<Produto> produtos) {
-        this.produtos = produtos;
+    public void setItems(Set<Item> items) {
+        this.items = items;
     }
 
     public Set<AtribuicaoOrdemServico> getAtribuicoes() {

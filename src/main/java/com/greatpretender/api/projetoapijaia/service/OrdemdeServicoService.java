@@ -24,11 +24,18 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
 
     public OrdemDeServico novaOrdemDeServico(OrdemDeServico ordem){
         if(ordem == null ||
-           ordem.getDescricao() == null ||
-           ordem.getStatusOrdem() == null
-           )
+            ordem.getDescricao() == null ||
+            ordem.getStatusOrdem() == null ||
+            ordem.getStatus_aprovacao() == null ||
+            ordem.getUsuario() == null ||
+            ordem.getStatus_aprovacao() == null ||
+            ordem.getSetor() == null ||
+            ordem.getCliente() == null ||
+            ordem.getData_inicio() == null ||
+            ordem.getData_fim() == null
+        )
         {
-        throw new IllegalArgumentException("Dados Inválidos!" + ordem.getDescricao() + ordem.getStatusOrdem());
+        throw new IllegalArgumentException("Dados Inválidos!" + ordem.getDescricao() + ordem.getStatusOrdem() + ordem.getStatus_aprovacao());
         }
         return ordemRepo.save(ordem);
     }
