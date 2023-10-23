@@ -27,15 +27,14 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
             ordem.getDescricao() == null ||
             ordem.getStatusOrdem() == null ||
             ordem.getStatus_aprovacao() == null ||
-            ordem.getUsuario() == null ||
-            ordem.getStatus_aprovacao() == null ||
+            //ordem.getUsuario() == null ||
             ordem.getSetor() == null ||
             ordem.getCliente() == null ||
             ordem.getData_inicio() == null ||
             ordem.getData_fim() == null
         )
         {
-        throw new IllegalArgumentException("Dados Inválidos!" + ordem.getDescricao() + ordem.getStatusOrdem() + ordem.getStatus_aprovacao());
+        throw new IllegalArgumentException("Dados Inválidos!" +ordem.getData_inicio() + ordem.getData_fim());
         }
         return ordemRepo.save(ordem);
     }
