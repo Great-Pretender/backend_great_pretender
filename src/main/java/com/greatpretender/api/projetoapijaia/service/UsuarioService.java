@@ -24,14 +24,6 @@ public class UsuarioService implements IUsuarioService{
         throw new IllegalArgumentException("Id inválido!");
     }
 
-    public Usuario buscarPorNome(String nome) {
-        Optional<Usuario> usuarioOp = usuarioRepo.findByNome(nome);
-        if (usuarioOp.isPresent()) {
-            return usuarioOp.get();
-        }
-        throw new IllegalArgumentException("Nome inválido!");
-    }
-
     @Transactional
     public Usuario novoUsuario(Usuario usuario) {
         

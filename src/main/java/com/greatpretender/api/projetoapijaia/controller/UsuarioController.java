@@ -34,16 +34,12 @@ public class UsuarioController {
 
      return service.novoUsuario(usuario);
    }
-/* 
+
    @GetMapping(value = "/{usuario}")
    public Usuario buscarPorId(@PathVariable("usuario") Long id) {
         return service.buscarPorId(id);
-   } */
-
-   @GetMapping(value = "/{usuario}")
-   public Usuario buscarPorNome(@PathVariable("usuario") String nome) {
-        return service.buscarPorNome(nome);
    }
+
 
    // Função para deletar servico por id
    @DeleteMapping(value = "/{usuario}")
