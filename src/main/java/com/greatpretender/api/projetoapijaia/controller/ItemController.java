@@ -38,12 +38,12 @@ public class ItemController {
    }
 
    // Função para deletar produto por id
-   @DeleteMapping(value = "/{produto}")
-   public Item deleteItem(@PathVariable("produto") Long id) {
+   @DeleteMapping(value = "/{item}")
+   public Item deleteItem(@PathVariable("item") Long id) {
      return service.deletarPorId(id);
    }
 
-   @PutMapping("/{produto}")
+   @PutMapping("/{item}")
    public Item editproduto(@RequestBody Item item){
      return service.novoItem(item);
     }
