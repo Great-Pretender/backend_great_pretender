@@ -32,16 +32,16 @@ public class ServicoController {
    public Servico novoServico(@RequestBody Servico servico) {
         return service.novoServico(servico);
    }
-   /* @GetMapping(value = "/{servico}")
-   public Servico buscarPorId(@PathVariable("servico") Long id) {
+     @GetMapping(value = "/{servico}")
+     public Servico buscarPorId(@PathVariable("servico") Long id) {
         return service.buscarPorId(id);
-   } */
-
-
-@GetMapping(value = "/{servico}")
-   public Servico buscarPorNome(@PathVariable("servico") String nome) {
-        return service.buscarPorNome(nome);
    } 
+
+
+// @GetMapping(value = "/{servico}")
+//    public Servico buscarPorNome(@PathVariable("servico") String nome) {
+//         return service.buscarPorNome(nome);
+//    } 
 
    
    // Função para deletar servico por id
