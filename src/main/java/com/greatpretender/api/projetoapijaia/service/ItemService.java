@@ -23,16 +23,16 @@ public class ItemService implements IItemService {
         throw new IllegalArgumentException("Id inválido!");
     }
 
-    public Item novoItem(Item Produto) {
-        if(Produto == null  ||
-                Produto.getNome() == null  ||
-                Produto.getSetor() == null  ||
-                Produto.getMarca() == null  ||
-                Produto.getModelo() == null  ||
-                Produto.getValidade() == null ) {
+    public Item novoItem(Item Item) {
+        if(Item == null  ||
+                Item.getNome() == null  ||
+                Item.getSetor() == null  ||
+                Item.getMarca() == null  ||
+                Item.getModelo() == null  ||
+                Item.getValidade() == null ) {
             throw new IllegalArgumentException("Dados inválidos!");
         }
-        return itemRepo.save(Produto);
+        return itemRepo.save(Item);
     }
 
     public List<Item> buscarTodosItems() {

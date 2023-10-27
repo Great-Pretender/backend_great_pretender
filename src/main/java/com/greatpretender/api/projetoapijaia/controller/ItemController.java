@@ -20,32 +20,33 @@ import com.greatpretender.api.projetoapijaia.service.IItemService;
 @RequestMapping("/item")
 @CrossOrigin
 public class ItemController {
-   @Autowired
-   private IItemService service;
+     @Autowired
+     private IItemService service;
 
-   @GetMapping
-   public List<Item> buscarTodos() {
-        return service.buscarTodosItems();
-   }
-   @PostMapping
-   public Item novoItem(@RequestBody Item item) {
-        return service.novoItem(item);
-   }
-   
-   @GetMapping(value = "/{item}")
-   public Item buscarPorId(@PathVariable("item") Long id) {
-        return service.buscarPorId(id);
-   }
+     @GetMapping
+     public List<Item> buscarTodos() {
+          return service.buscarTodosItems();
+     }
 
-   // Função para deletar produto por id
-   @DeleteMapping(value = "/{produto}")
-   public Item deleteItem(@PathVariable("produto") Long id) {
-     return service.deletarPorId(id);
-   }
+     @PostMapping
+     public Item novoItem(@RequestBody Item item) {
+          return service.novoItem(item);
+     }
 
-   @PutMapping("/{produto}")
-   public Item editproduto(@RequestBody Item item){
-     return service.novoItem(item);
-    }
+     @GetMapping(value = "/{item}")
+     public Item buscarPorId(@PathVariable("item") Long id) {
+          return service.buscarPorId(id);
+     }
+
+     // Função para deletar produto por id
+     @DeleteMapping(value = "/{item}")
+     public Item deleteItem(@PathVariable("item") Long id) {
+          return service.deletarPorId(id);
+     }
+
+     @PutMapping("/{item}")
+     public Item editproduto(@RequestBody Item item) {
+          return service.novoItem(item);
+     }
 
 }

@@ -20,39 +20,39 @@ import com.greatpretender.api.projetoapijaia.service.IServicoService;
 @RequestMapping("/servico")
 @CrossOrigin
 public class ServicoController {
-   @Autowired
-   private IServicoService service;
+     @Autowired
+     private IServicoService service;
 
-   @GetMapping
-   public List<Servico> buscarTodos() {
-        return service.buscarTodosServicos();
-   }
+     @GetMapping
+     public List<Servico> buscarTodos() {
+          return service.buscarTodosServicos();
+     }
 
-   @PostMapping
-   public Servico novoServico(@RequestBody Servico servico) {
-        return service.novoServico(servico);
-   }
-   /* @GetMapping(value = "/{servico}")
-   public Servico buscarPorId(@PathVariable("servico") Long id) {
-        return service.buscarPorId(id);
-   } */
+     @PostMapping
+     public Servico novoServico(@RequestBody Servico servico) {
+          return service.novoServico(servico);
+     }
+     /*
+      * @GetMapping(value = "/{servico}")
+      * public Servico buscarPorId(@PathVariable("servico") Long id) {
+      * return service.buscarPorId(id);
+      * }
+      */
 
+     @GetMapping(value = "/{servico}")
+     public Servico buscarPorNome(@PathVariable("servico") String nome) {
+          return service.buscarPorNome(nome);
+     }
 
-@GetMapping(value = "/{servico}")
-   public Servico buscarPorNome(@PathVariable("servico") String nome) {
-        return service.buscarPorNome(nome);
-   } 
+     // Função para deletar servico por id
+     @DeleteMapping(value = "/{servico}")
+     public Servico deleteServico(@PathVariable("servico") Long id) {
+          return service.deletarPorId(id);
+     }
 
-   
-   // Função para deletar servico por id
-   @DeleteMapping(value = "/{servico}")
-   public Servico deleteServico(@PathVariable("servico") Long id) {
-     return service.deletarPorId(id);
-   }
-
-   @PutMapping("/{servico}")
-   public Servico editServico(@RequestBody Servico servico){
-     return service.novoServico(servico);
-   }     
+     @PutMapping("/{servico}")
+     public Servico editServico(@RequestBody Servico servico) {
+          return service.novoServico(servico);
+     }
 
 }
