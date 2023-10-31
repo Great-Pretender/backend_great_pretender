@@ -35,7 +35,7 @@ public class JwtUtils {
                 .signWith(Keys.hmacShaKeyFor(KEY.getBytes()), SignatureAlgorithm.HS256).compact();
     }
 
-    public static Authentication perseToken(String token)
+    public static Authentication parseToken(String token)
         throws IOException, JsonProcessingException{
         ObjectMapper mapper = new ObjectMapper();
         String credentialsJson = Jwts.parserBuilder()

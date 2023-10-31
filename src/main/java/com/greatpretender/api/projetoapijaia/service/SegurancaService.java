@@ -29,9 +29,7 @@ public class SegurancaService implements UserDetailsService {
 
         Usuario usuario = usuarioOp.get();
         return User.builder().username(username).password(usuario.getSenha())
-                .authorities(usuario.getAutorizacoes().stream()
-                        .map(Autorizacao::getNome).collect(Collectors.toList())
-                        .toArray(new String[Usuario.getAutorizacoes().size()]))
+                .authorities(usuario.getCargo())
                             .build();
     }
 }
