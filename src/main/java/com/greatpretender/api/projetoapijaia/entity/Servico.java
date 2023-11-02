@@ -17,7 +17,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "servico")
+@Table(name = "servico")
 public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,7 @@ public class Servico {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_setor")
     private Setor setor;
-    
+
     @OneToMany(mappedBy = "servico")
     @JsonIgnore
     private Set<Item> items;
@@ -105,7 +105,6 @@ public class Servico {
     public void setDuracao_dias(String duracao_dias) {
         this.duracao_dias = duracao_dias;
     }
-    
 
     public String getCusto() {
         return custo;
@@ -118,7 +117,7 @@ public class Servico {
     public Set<Item> getItems() {
         return items;
     }
-    
+
     public void setItems(Set<Item> items) {
         this.items = items;
     }
@@ -138,5 +137,5 @@ public class Servico {
     public void setSetor(Setor setor) {
         this.setor = setor;
     }
-    
+
 }
