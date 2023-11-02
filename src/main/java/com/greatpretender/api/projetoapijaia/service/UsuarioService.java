@@ -6,11 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.repository.UsuarioRepository;
-
-import jakarta.transaction.Transactional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -27,9 +26,10 @@ public class UsuarioService implements IUsuarioService{
         throw new IllegalArgumentException("Id inválido!");
     }
 
-    @Transactional
+
     @Autowired
     private PasswordEncoder encoder;
+    @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public Usuario novoUsuario(Usuario usuario) {
         
