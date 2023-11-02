@@ -1,4 +1,5 @@
 package com.greatpretender.api.projetoapijaia.entity;
+
 import jakarta.persistence.GenerationType;
 
 import java.time.LocalDate;
@@ -25,10 +26,10 @@ public class Contrato {
     private Long numero_contrato;
 
     @Column(name = "valor_contrato")
-    private Float valor_contrato;
+    private Double valor_contrato;
 
     @Column(name = "valor_multa")
-    private Float valor_multa;
+    private Double valor_multa;
 
     @Column(name = "inicio_contrato")
     private LocalDate inicio_contrato;
@@ -49,10 +50,11 @@ public class Contrato {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public Contrato() {}
+    public Contrato() {
+    }
 
-    public Contrato(Long numero_contrato, Float valor_contrato, Float valor_multa, LocalDate inicio_contrato,
-    LocalDate fim_contrato, String detalhes_pagamento, String tempo_prorrogacao, String clausulas_contrato) {
+    public Contrato(Long numero_contrato, Double valor_contrato, Double valor_multa, LocalDate inicio_contrato,
+            LocalDate fim_contrato, String detalhes_pagamento, String tempo_prorrogacao, String clausulas_contrato) {
         this.numero_contrato = numero_contrato;
         this.valor_contrato = valor_contrato;
         this.valor_multa = valor_multa;
@@ -71,19 +73,19 @@ public class Contrato {
         this.numero_contrato = numero_contrato;
     }
 
-    public Float getValor_contrato() {
+    public Double getValor_contrato() {
         return valor_contrato;
     }
 
-    public void setValor_contrato(Float valor_contrato) {
+    public void setValor_contrato(Double valor_contrato) {
         this.valor_contrato = valor_contrato;
     }
 
-    public Float getValor_multa() {
+    public Double getValor_multa() {
         return valor_multa;
     }
 
-    public void setValor_multa(Float valor_multa) {
+    public void setValor_multa(Double valor_multa) {
         this.valor_multa = valor_multa;
     }
 
@@ -99,7 +101,7 @@ public class Contrato {
         return fim_contrato;
     }
 
-    public void setFim_contrato(LocalDate    fim_contrato) {
+    public void setFim_contrato(LocalDate fim_contrato) {
         this.fim_contrato = fim_contrato;
     }
 
@@ -143,6 +145,4 @@ public class Contrato {
         this.id = id;
     }
 
-    
-    
 }

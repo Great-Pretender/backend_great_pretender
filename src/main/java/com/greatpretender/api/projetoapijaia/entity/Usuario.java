@@ -51,90 +51,88 @@ public class Usuario {
     @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
+    public Usuario() {
+    }
 
-    public Usuario() { }
+    public Usuario(String cpf, String nome, String senha, String email, String cargo) {
+        this();
+        this.cpf = cpf;
+        this.nome = nome;
+        this.senha = senha;
+        this.email = email;
+        this.cargo = cargo;
+    }
 
-        public Usuario(String cpf, String nome, String senha, String email, String cargo) {
-            this();
-            this.cpf = cpf;
-            this.nome = nome;
-            this.senha = senha;
-            this.email = email;
-            this.cargo = cargo;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        public Long getId() {
-            return id;
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        public void setId(Long id) {
-            this.id = id;
-        }
+    public String getCpf() {
+        return cpf;
+    }
 
-        public String getCpf() {
-            return cpf;
-        }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-        public void setCpf(String cpf) {
-            this.cpf = cpf;
-        }
+    public String getNome() {
+        return nome;
+    }
 
-        public String getNome() {
-            return nome;
-        }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-        public void setNome(String nome) {
-            this.nome = nome;
-        }
+    public String getSenha() {
+        return senha;
+    }
 
-        public String getSenha() {
-            return senha;
-        }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-        public void setSenha(String senha) {
-            this.senha = senha;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        public void setEmail(String email) {
-            this.email = email;
-        }
+    public Set<OrdemDeServico> getOrdemDeServicos() {
+        return ordemDeServicos;
+    }
 
-        
-        public Set<OrdemDeServico> getOrdemDeServicos() {
-            return ordemDeServicos;
-        }
+    public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
+        this.ordemDeServicos = ordemDeServicos;
+    }
 
-        public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
-            this.ordemDeServicos = ordemDeServicos;
-        }
+    public Set<AtribuicaoOrdemServico> getAtribuicoes() {
+        return atribuicoes;
+    }
 
-        public Set<AtribuicaoOrdemServico> getAtribuicoes() {
-            return atribuicoes;
-        }
+    public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
+        this.atribuicoes = atribuicoes;
+    }
 
-        public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
-            this.atribuicoes = atribuicoes;
-        }
+    public Setor getSetor() {
+        return setor;
+    }
 
-        public Setor getSetor() {
-            return setor;
-        }
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
 
-        public void setSetor(Setor setor) {
-            this.setor = setor;
-        }
+    public String getCargo() {
+        return cargo;
+    }
 
-        public String getCargo() {
-            return cargo;
-        }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
-        public void setCargo(String cargo) {
-            this.cargo = cargo;
-        }
-
-        
 }
