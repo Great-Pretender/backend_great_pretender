@@ -20,22 +20,13 @@ import com.greatpretender.api.projetoapijaia.service.IItemService;
 @RequestMapping("/item")
 @CrossOrigin
 public class ItemController {
-   @Autowired
-   private IItemService service;
+     @Autowired
+     private IItemService service;
 
-   @GetMapping
-   public List<Item> buscarTodos() {
-        return service.buscarTodosItems();
-   }
-   @PostMapping
-   public Item novoItem(@RequestBody Item item) {
-        return service.novoItem(item);
-   }
-   
-   @GetMapping(value = "/{item}")
-   public Item buscarPorId(@PathVariable("item") Long id) {
-        return service.buscarPorId(id);
-   }
+     @GetMapping
+     public List<Item> buscarTodos() {
+          return service.buscarTodosItems();
+     }
 
    // Função para deletar produto por id
    @DeleteMapping(value = "/{item}")

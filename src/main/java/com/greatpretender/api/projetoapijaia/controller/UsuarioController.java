@@ -35,6 +35,7 @@ public class UsuarioController {
      return service.novoUsuario(usuario);
    }
 
+
    @GetMapping(value = "/{usuario}")
    public Usuario buscarPorId(@PathVariable("usuario") Long id) {
         return service.buscarPorId(id);
