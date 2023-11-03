@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatpretender.api.projetoapijaia.entity.Servico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.service.IServicoService;
 
 @RestController
@@ -38,11 +39,12 @@ public class ServicoController {
      return service.buscarPorId(id);
       }
      
-
-     // @GetMapping(value = "/{servico}")
-     // public Servico buscarPorNome(@PathVariable("servico") String nome) {
-     //      return service.buscarPorNome(nome);
-     // }
+      //
+      @PostMapping(value = "/idSetor")
+      public List<Servico> buscarPorIdSetor(@RequestBody Setor idSetor) {
+          System.out.println(" J O R G EEEE " + idSetor.getNome());
+           return service.buscarPorIdSetor(idSetor);
+      }
 
      // Função para deletar servico por id
      @DeleteMapping(value = "/{servico}")
