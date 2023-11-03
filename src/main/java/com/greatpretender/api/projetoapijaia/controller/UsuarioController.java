@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.greatpretender.api.projetoapijaia.entity.Servico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.service.IUsuarioService;
 
@@ -40,6 +42,12 @@ public class UsuarioController {
    public Usuario buscarPorId(@PathVariable("usuario") Long id) {
         return service.buscarPorId(id);
    }
+
+   //
+      @PostMapping(value = "/idSetor")
+      public List<Usuario> buscarPorIdSetor(@RequestBody Setor idSetor) {
+           return service.buscarPorIdSetor(idSetor);
+      }
 
   //  @GetMapping(value = "/{usuario}")
   //  public Usuario buscarPorNome(@PathVariable("usuario") String nome) {
