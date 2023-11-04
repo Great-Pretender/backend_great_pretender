@@ -1,5 +1,7 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,10 +16,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +42,7 @@ public class Usuario {
     private String email;
 
     @Column(name = "cargo")
-    private String cargo;
+    private UsuarioCargo cargo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_setor")
@@ -54,7 +59,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String cpf, String nome, String senha, String email, String cargo) {
+    public Usuario(String cpf, String nome, String senha, String email, UsuarioCargo cargo) {
         this();
         this.cpf = cpf;
         this.nome = nome;
@@ -127,12 +132,47 @@ public class Usuario {
         this.setor = setor;
     }
 
-    public String getCargo() {
+    public UsuarioCargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(UsuarioCargo cargo) {
         this.cargo = cargo;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.cargo == UsuarioCargo.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return nome;
+    }
+
+    @Override
+    public String getUsername() {
+        return nome;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
