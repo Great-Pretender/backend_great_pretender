@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatpretender.api.projetoapijaia.entity.AtribuicaoOrdemServico;
+import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
+import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.repository.AtribuicaoOrdemDeServicoRepository;
 import com.greatpretender.api.projetoapijaia.service.IAtribuicaoOrdemDeServico;
 
@@ -37,6 +40,11 @@ public class AtribuicaoOrdemDeServicoController {
     public AtribuicaoOrdemServico novaAtribuicaoOrdemServico(@RequestBody AtribuicaoOrdemServico atribuicaoOrdemServico){
         return service.novaAtribuicaoOrdemDeServico(atribuicaoOrdemServico);
     }
+
+    @PostMapping(value = "/idOrdem")
+      public List<AtribuicaoOrdemServico> buscarPorIdOrdem(@RequestBody OrdemDeServico idOrdem) {
+           return service.buscarPorIdOrdem(idOrdem);
+      }
 
     @DeleteMapping(value = "/{atribuicao}")
     public AtribuicaoOrdemServico deleteAtribuicaoOrdemServico(@PathVariable("atribuicao") Long id) {

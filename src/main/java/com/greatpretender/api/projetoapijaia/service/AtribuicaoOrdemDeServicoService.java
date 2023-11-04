@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.AtribuicaoOrdemServico;
+import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
+import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.repository.AtribuicaoOrdemDeServicoRepository;
 
 @Service
@@ -49,4 +52,15 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
         throw new IllegalArgumentException("ID inválido!");
     }
 
+    public List<AtribuicaoOrdemServico> buscarPorIdOrdem(OrdemDeServico idOrdem){
+        
+        try{
+        List<AtribuicaoOrdemServico> servicos = atribuicaoRepo.findAtribuicaoOrdemServicoByOrdemId(idOrdem.getId());
+       
+            return servicos;
+        } catch (Exception e) {
+        
+        throw new IllegalArgumentException("Id inválido! "+ e);
+            }
+    }
 }

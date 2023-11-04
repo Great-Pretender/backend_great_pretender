@@ -43,7 +43,7 @@ public class UsuarioController {
         return service.buscarPorId(id);
    }
 
-   //
+   //cd
       @PostMapping(value = "/idSetor")
       public List<Usuario> buscarPorIdSetor(@RequestBody Setor idSetor) {
            return service.buscarPorIdSetor(idSetor);
