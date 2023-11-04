@@ -32,7 +32,7 @@ public class UsuarioService implements IUsuarioService{
                 usuario.getCpf().isBlank() ||
                 usuario.getNome() == null ||
                 usuario.getSetor() == null ||
-                usuario.getCargo() == null ||
+               // usuario.getCargo() == null ||
                 usuario.getNome().isBlank() ||
                 usuario.getSenha() == null ||
                 usuario.getSenha().isBlank() ||
