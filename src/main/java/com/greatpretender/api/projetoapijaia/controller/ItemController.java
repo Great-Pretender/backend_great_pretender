@@ -28,6 +28,11 @@ public class ItemController {
           return service.buscarTodosItems();
      }
 
+     @PostMapping
+    public Item cadastar(@RequestBody Item item){
+        return service.novoItem(item);
+    }
+
    // Função para deletar produto por id
    @DeleteMapping(value = "/{item}")
    public Item deleteItem(@PathVariable("item") Long id) {
