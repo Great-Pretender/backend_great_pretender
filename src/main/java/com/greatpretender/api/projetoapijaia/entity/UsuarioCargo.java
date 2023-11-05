@@ -3,9 +3,9 @@ package com.greatpretender.api.projetoapijaia.entity;
 
 public enum UsuarioCargo {
 
-    ADMIN("admin"),
+    ADMIN("ROLE_ADMIN"),
 
-    USER("user");
+    USER("ROLE_USER");
 
     private String cargo;
 

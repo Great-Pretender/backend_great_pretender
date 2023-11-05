@@ -1,7 +1,5 @@
 package com.greatpretender.api.projetoapijaia.entity;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,13 +14,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario implements UserDetails {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +37,7 @@ public class Usuario implements UserDetails {
     private String email;
 
     @Column(name = "cargo")
-    private UsuarioCargo cargo;
+    private String cargo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_setor")
@@ -56,123 +51,90 @@ public class Usuario implements UserDetails {
     @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
-    public Usuario() {
-    }
 
-    public Usuario(String cpf, String nome, String senha, String email, UsuarioCargo cargo) {
-        this();
-        this.cpf = cpf;
-        this.nome = nome;
-        this.senha = senha;
-        this.email = email;
-        this.cargo = cargo;
-    }
+    public Usuario() { }
 
-    public Long getId() {
-        return id;
-    }
+        public Usuario(String cpf, String nome, String senha, String email, String cargo) {
+            this();
+            this.cpf = cpf;
+            this.nome = nome;
+            this.senha = senha;
+            this.email = email;
+            this.cargo = cargo;
+        }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+        public Long getId() {
+            return id;
+        }
 
-    public String getCpf() {
-        return cpf;
-    }
+        public void setId(Long id) {
+            this.id = id;
+        }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+        public String getCpf() {
+            return cpf;
+        }
 
-    public String getNome() {
-        return nome;
-    }
+        public void setCpf(String cpf) {
+            this.cpf = cpf;
+        }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+        public String getNome() {
+            return nome;
+        }
 
-    public String getSenha() {
-        return senha;
-    }
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+        public String getSenha() {
+            return senha;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public void setSenha(String senha) {
+            this.senha = senha;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public Set<OrdemDeServico> getOrdemDeServicos() {
-        return ordemDeServicos;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
-        this.ordemDeServicos = ordemDeServicos;
-    }
+        
+        public Set<OrdemDeServico> getOrdemDeServicos() {
+            return ordemDeServicos;
+        }
 
-    public Set<AtribuicaoOrdemServico> getAtribuicoes() {
-        return atribuicoes;
-    }
+        public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
+            this.ordemDeServicos = ordemDeServicos;
+        }
 
-    public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
-        this.atribuicoes = atribuicoes;
-    }
+        public Set<AtribuicaoOrdemServico> getAtribuicoes() {
+            return atribuicoes;
+        }
 
-    public Setor getSetor() {
-        return setor;
-    }
+        public void setAtribuicoes(Set<AtribuicaoOrdemServico> atribuicoes) {
+            this.atribuicoes = atribuicoes;
+        }
 
-    public void setSetor(Setor setor) {
-        this.setor = setor;
-    }
+        public Setor getSetor() {
+            return setor;
+        }
 
-    public UsuarioCargo getCargo() {
-        return cargo;
-    }
+        public void setSetor(Setor setor) {
+            this.setor = setor;
+        }
 
-    public void setCargo(UsuarioCargo cargo) {
-        this.cargo = cargo;
-    }
+        public String getCargo() {
+            return cargo;
+        }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.cargo == UsuarioCargo.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
-        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
-    }
+        public void setCargo(String cargo) {
+            this.cargo = cargo;
+        }
 
-    @Override
-    public String getPassword() {
-        return nome;
-    }
-
-    @Override
-    public String getUsername() {
-        return nome;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+        
 }
