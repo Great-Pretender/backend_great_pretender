@@ -33,7 +33,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente cadastar(@RequestBody Cliente cliente){
+    public Cliente cadastrar(@RequestBody Cliente cliente){
         return repositorio_cliente.save(cliente);
     }
 

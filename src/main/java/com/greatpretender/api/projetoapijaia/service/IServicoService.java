@@ -3,6 +3,7 @@ package com.greatpretender.api.projetoapijaia.service;
 import java.util.List;
 
 import com.greatpretender.api.projetoapijaia.entity.Servico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 
 public interface IServicoService {
     
@@ -10,5 +11,5 @@ public interface IServicoService {
     public Servico novoServico(Servico servico);
     public List<Servico> buscarTodosServicos();
     public Servico deletarPorId(Long id);
-    public Servico buscarPorNome(String nome);
+    public List<Servico> buscarPorIdSetor(Setor idSetor);
 }

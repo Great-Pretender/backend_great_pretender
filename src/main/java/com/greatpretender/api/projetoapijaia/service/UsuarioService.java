@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.greatpretender.api.projetoapijaia.entity.Servico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.repository.UsuarioRepository;
 
@@ -43,6 +45,18 @@ public class UsuarioService implements IUsuarioService{
             throw new IllegalArgumentException("Dados inválidos!");
         }
         return usuarioRepo.save(usuario);
+    }
+
+     public List<Usuario> buscarPorIdSetor(Setor idSetor){
+        
+        try{
+        List<Usuario> servicos = usuarioRepo.findUsuarioBySetorId(idSetor.getId());
+       
+            return servicos;
+        } catch (Exception e) {
+        
+        throw new IllegalArgumentException("Id inválido! "+ e);
+            }
     }
 
     public List<Usuario> buscarTodosUsuarios() {
