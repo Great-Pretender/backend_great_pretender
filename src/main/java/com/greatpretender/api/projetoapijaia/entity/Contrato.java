@@ -40,6 +40,9 @@ public class Contrato {
     @Column(name = "detalhes_pagamento")
     private String detalhes_pagamento;
 
+    @Column(name = "descricao_contrato")
+    private String descricao_contrato;
+
     @Column(name = "tempo_prorrogacao")
     private String tempo_prorrogacao;
 
@@ -54,12 +57,13 @@ public class Contrato {
     }
 
     public Contrato(Long numero_contrato, Double valor_contrato, Double valor_multa, LocalDate inicio_contrato,
-            LocalDate fim_contrato, String detalhes_pagamento, String tempo_prorrogacao, String clausulas_contrato) {
+            LocalDate fim_contrato, String detalhes_pagamento, String tempo_prorrogacao, String clausulas_contrato, String descricao_contrato) {
         this.numero_contrato = numero_contrato;
         this.valor_contrato = valor_contrato;
         this.valor_multa = valor_multa;
         this.inicio_contrato = inicio_contrato;
         this.fim_contrato = fim_contrato;
+        this.descricao_contrato = descricao_contrato;
         this.detalhes_pagamento = detalhes_pagamento;
         this.tempo_prorrogacao = tempo_prorrogacao;
         this.clausulas_contrato = clausulas_contrato;
@@ -143,6 +147,14 @@ public class Contrato {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDescricao_contrato() {
+        return descricao_contrato;
+    }
+
+    public void setDescricao_contrato(String descricao_contrato) {
+        this.descricao_contrato = descricao_contrato;
     }
 
 }
