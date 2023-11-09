@@ -3,7 +3,6 @@ package com.greatpretender.api.projetoapijaia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatpretender.api.projetoapijaia.entity.Servico;
 import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.service.IUsuarioService;
@@ -26,7 +24,6 @@ public class UsuarioController {
    @Autowired
    private IUsuarioService service;
 
-   @PreAuthorize("isAuthenticated")
    @GetMapping
    public List<Usuario> buscarTodosUsuarios() {
      return service.buscarTodosUsuarios();
@@ -38,7 +35,7 @@ public class UsuarioController {
      return service.novoUsuario(usuario);
    }
 
-
+   
    @GetMapping(value = "/{usuario}")
    public Usuario buscarPorId(@PathVariable("usuario") Long id) {
         return service.buscarPorId(id);
