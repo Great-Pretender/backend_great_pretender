@@ -26,9 +26,9 @@ public class JwtUtils {
         }
         String usuarioJson = mapper.writeValueAsString(usuarioSemSenha);
         Date agora = new Date();
-        Long hora = 1000L * 60L; //Uma Hora
+        Long hora = 1000L * 60L * 60L; //Uma Hora
         return Jwts.builder()
-                .claim("userDetails", usuarioJson)
+                .claim("UserDetails", usuarioJson)
                 .setIssuer("com.greatpretender.api.projetoapijaia")
                 .setSubject(usuario.getName())
                 .setExpiration(new Date(agora.getTime() + hora))
