@@ -59,9 +59,9 @@ public class UsuarioService implements IUsuarioService{
      public List<Usuario> buscarPorIdSetor(Setor idSetor){
         
         try{
-        List<Usuario> servicos = usuarioRepo.findUsuarioBySetorId(idSetor.getId());
+        List<Usuario> usuarios = usuarioRepo.findUsuarioBySetorId(idSetor.getId());
        
-            return servicos;
+            return usuarios;
         } catch (Exception e) {
         
         throw new IllegalArgumentException("Id inválido! "+ e);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
 import com.greatpretender.api.projetoapijaia.service.IOrdemDeServicoService;
+import com.greatpretender.api.projetoapijaia.entity.Cliente;
 
 @RestController
 @RequestMapping(value = "/ordemdeservico")
@@ -50,4 +51,9 @@ public class OrdemDeServicoController {
     public OrdemDeServico editOrdemDeServico(@RequestBody OrdemDeServico ordemDeServico){
         return service.novaOrdemDeServico(ordemDeServico);
     }
+
+    @PostMapping(value = "/idCliente")
+      public List<OrdemDeServico> buscarPorIdCliente(@RequestBody Cliente idCliente) {
+           return service.buscarPorIdCliente(idCliente);
+      }
 }

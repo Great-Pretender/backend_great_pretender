@@ -1,5 +1,6 @@
 package com.greatpretender.api.projetoapijaia.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
 import com.greatpretender.api.projetoapijaia.repository.OrdemDeServicoRepository;
+
+import com.greatpretender.api.projetoapijaia.entity.Cliente; 
 
 @Service
 public class OrdemdeServicoService implements IOrdemDeServicoService {
@@ -52,5 +55,17 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
             return ordemDeServicoOp.get();
         }
         throw new IllegalArgumentException("ID inválido!");
+    }
+
+    public List<OrdemDeServico> buscarPorIdCliente( Cliente idCliente){
+        try{
+            
+        List<OrdemDeServico> ordens = ordemRepo.findOrdemDeServicoByClienteIdAndStatusOrdem(idCliente.getId(), "Concluido"); 
+       
+            return ordens;
+        } catch (Exception e) {
+        
+        throw new IllegalArgumentException("Id inválido! "+ e);
+            }
     }
 }
