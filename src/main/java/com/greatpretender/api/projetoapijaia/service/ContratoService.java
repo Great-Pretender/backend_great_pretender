@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Contrato;
@@ -15,6 +16,7 @@ public class ContratoService implements IContratoService{
     @Autowired
     private ContratoRepository contratoRepo;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Contrato buscarPorId(Long id) {
         Optional<Contrato> contratoOp = contratoRepo.findById(id);
         if(contratoOp.isPresent()){
@@ -23,6 +25,7 @@ public class ContratoService implements IContratoService{
         throw new IllegalArgumentException("Id inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Contrato novoContrato(Contrato contrato) {
         if(contrato == null ||
             contrato.getNumero_contrato() == null ||
@@ -39,10 +42,12 @@ public class ContratoService implements IContratoService{
         return contratoRepo.save(contrato);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<Contrato> buscarTodosContratos(){
         return contratoRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Contrato deletarPorId(Long id){
         Optional<Contrato> contratoOp = contratoRepo.findById(id);
         if(contratoOp.isPresent()){

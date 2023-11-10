@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
@@ -14,6 +15,7 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
     @Autowired
     private OrdemDeServicoRepository ordemRepo;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public OrdemDeServico buscarPorId(Long id){
         Optional<OrdemDeServico> ordemDeServicoOp = ordemRepo.findById(id);
         if(ordemDeServicoOp.isPresent()){
@@ -22,6 +24,7 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
     throw new IllegalArgumentException("ID inválido");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public OrdemDeServico novaOrdemDeServico(OrdemDeServico ordem){
         if(ordem == null ||
             ordem.getDescricao() == null ||
@@ -40,10 +43,12 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
     }
 
     // Listar Todas Ordens de Serviço
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<OrdemDeServico> buscarTodasOrdensDeServico(){
         return(List<OrdemDeServico>) ordemRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public OrdemDeServico deletarPorId(Long id){
         Optional<OrdemDeServico> ordemDeServicoOp = ordemRepo.findById(id);
         if(ordemDeServicoOp.isPresent()){

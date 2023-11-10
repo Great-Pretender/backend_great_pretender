@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Servico;
@@ -18,6 +19,7 @@ public class ServicoService implements IServicoService {
     @Autowired
     private ServicoRepository servicoRepo;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Servico buscarPorId(Long id) {
         Optional<Servico> servicoOp = servicoRepo.findById(id);
         if (servicoOp.isPresent()) {
@@ -27,6 +29,7 @@ public class ServicoService implements IServicoService {
     }
 
     @Transactional
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Servico novoServico(Servico servico) {
         if(servico == null  ||
                 servico.getNome() == null  ||
@@ -42,10 +45,12 @@ public class ServicoService implements IServicoService {
         return servicoRepo.save(servico);
     }
 
+    @PreAuthorize("hasAnyRole(''ADMIN')")
     public List<Servico> buscarTodosServicos() {
         return servicoRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Servico deletarPorId(Long id){
         Optional<Servico> servicoOp = servicoRepo.findById(id);
         if(servicoOp.isPresent()){
@@ -56,6 +61,7 @@ public class ServicoService implements IServicoService {
         throw new IllegalArgumentException("ID inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('TECNICO', 'ADMIN')")
     public List<Servico> buscarPorIdSetor(Setor idSetor){
         
         try{
