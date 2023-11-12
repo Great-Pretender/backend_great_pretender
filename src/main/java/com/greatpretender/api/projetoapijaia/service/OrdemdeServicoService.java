@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
+import com.greatpretender.api.projetoapijaia.entity.Servico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.repository.OrdemDeServicoRepository;
 
 @Service
@@ -53,5 +55,16 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
             return ordemDeServicoOp.get();
         }
         throw new IllegalArgumentException("ID inválido!");
+    }
+
+    public List<OrdemDeServico> buscarPorIdSetor(Setor idSetor) {
+        try{
+        List<OrdemDeServico> ordens = ordemRepo.findOrdemDeServicoBySetorId(idSetor.getId());
+       
+            return ordens;
+        } catch (Exception e) {
+        
+        throw new IllegalArgumentException("Id inválido! "+ e);
+            }
     }
 }
