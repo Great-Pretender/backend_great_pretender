@@ -55,7 +55,7 @@ public class OrdemDeServicoController {
 
     @PostMapping(value = "/idSetor")
       public List<OrdemDeServico> buscarPorIdSetor(@RequestBody Setor idSetor) {
-           return service.buscarPorIdSetor(idSetor);
+           return service.buscarPorIdSetor(idSetor);}
 
     @PostMapping(value = "/idCliente")
       public List<OrdemDeServico> buscarPorIdCliente(@RequestBody Cliente idCliente) {

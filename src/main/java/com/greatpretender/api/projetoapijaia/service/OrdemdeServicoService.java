@@ -67,6 +67,12 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
     public List<OrdemDeServico> buscarPorIdSetor(Setor idSetor) {
         try{
         List<OrdemDeServico> ordens = ordemRepo.findOrdemDeServicoBySetorId(idSetor.getId());
+    } catch (Exception e) {
+        
+        throw new IllegalArgumentException("Id inválido! "+ e);
+            }
+        return null;
+        }
 
     public List<OrdemDeServico> buscarPorIdCliente( Cliente idCliente){
         try{
