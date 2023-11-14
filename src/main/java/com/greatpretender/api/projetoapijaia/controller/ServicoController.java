@@ -42,7 +42,6 @@ public class ServicoController {
       //
       @PostMapping(value = "/idSetor")
       public List<Servico> buscarPorIdSetor(@RequestBody Setor idSetor) {
-          
            return service.buscarPorIdSetor(idSetor);
       }
 

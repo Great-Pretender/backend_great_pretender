@@ -9,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.OrdemDeServico;
+import com.greatpretender.api.projetoapijaia.entity.Servico;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.repository.OrdemDeServicoRepository;
 
 import com.greatpretender.api.projetoapijaia.entity.Cliente; 
@@ -62,11 +64,14 @@ public class OrdemdeServicoService implements IOrdemDeServicoService {
         throw new IllegalArgumentException("ID inválido!");
     }
 
+    public List<OrdemDeServico> buscarPorIdSetor(Setor idSetor) {
+        try{
+        List<OrdemDeServico> ordens = ordemRepo.findOrdemDeServicoBySetorId(idSetor.getId());
+
     public List<OrdemDeServico> buscarPorIdCliente( Cliente idCliente){
         try{
             
-        List<OrdemDeServico> ordens = ordemRepo.findOrdemDeServicoByClienteIdAndStatusOrdem(idCliente.getId(), "Concluido"); 
-       
+        List<OrdemDeServico> ordens = ordemRepo.findOrdemDeServicoByClienteIdAndStatusOrdem(idCliente.getId(), "Concluido");        
             return ordens;
         } catch (Exception e) {
         
