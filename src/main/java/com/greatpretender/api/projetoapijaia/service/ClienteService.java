@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Cliente;
@@ -23,6 +24,7 @@ public class ClienteService implements IClienteService {
         throw new IllegalArgumentException("Id inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Cliente novoCliente(Cliente cliente) {
         if(cliente == null  ||
                 cliente.getCnpj() == null  ||
@@ -39,10 +41,12 @@ public class ClienteService implements IClienteService {
         return clienteRepo.save(cliente);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<Cliente> buscarTodosClientes() {
         return clienteRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Cliente deletarPorId(Long id){
         Optional<Cliente> clienteOp = clienteRepo.findById(id);
         if(clienteOp.isPresent()){

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.AtribuicaoOrdemServico;
@@ -18,6 +19,7 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
     @Autowired
     private AtribuicaoOrdemDeServicoRepository atribuicaoRepo;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public AtribuicaoOrdemServico buscarPorId(Long id){
         Optional<AtribuicaoOrdemServico> atribuicaoOrdemDeServicoOp = atribuicaoRepo.findById(id);
         if(atribuicaoOrdemDeServicoOp.isPresent()){
@@ -26,6 +28,7 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
         throw new IllegalArgumentException("ID inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public AtribuicaoOrdemServico novaAtribuicaoOrdemDeServico(AtribuicaoOrdemServico atribuicaoOrdemServico) {
         if(atribuicaoOrdemServico.getUsuario() == null ||
             atribuicaoOrdemServico.getServico() == null
@@ -35,11 +38,13 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
            return atribuicaoRepo.save(atribuicaoOrdemServico);
     }
 
-    // Listar Todas as Atribuicoes
+    // Listar Todas as Atribuicoes  
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<AtribuicaoOrdemServico> buscarTodasAtribuicoesOrdensDeServico(){
         return(List<AtribuicaoOrdemServico>) atribuicaoRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public AtribuicaoOrdemServico deletarPorId(Long id){
         Optional<AtribuicaoOrdemServico> atribuicaoOrdemDeServicoOp = atribuicaoRepo.findById(id);
         if(atribuicaoOrdemDeServicoOp.isPresent()){
@@ -52,6 +57,7 @@ public class AtribuicaoOrdemDeServicoService implements IAtribuicaoOrdemDeServic
         throw new IllegalArgumentException("ID inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<AtribuicaoOrdemServico> buscarPorIdOrdem(OrdemDeServico idOrdem){
         
         try{

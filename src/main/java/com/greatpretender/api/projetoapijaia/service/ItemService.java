@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Item;
@@ -15,6 +16,7 @@ public class ItemService implements IItemService {
     @Autowired
     private ItemRepository itemRepo;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Item buscarPorId(Long id) {
         Optional<Item> itemOp = itemRepo.findById(id);
         if (itemOp.isPresent()) {
@@ -23,6 +25,7 @@ public class ItemService implements IItemService {
         throw new IllegalArgumentException("Id inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Item novoItem(Item Item) {
         if(Item == null  ||
                 Item.getNome() == null  ||
@@ -35,10 +38,12 @@ public class ItemService implements IItemService {
         return itemRepo.save(Item);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<Item> buscarTodosItems() {
         return itemRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Item deletarPorId(Long id){
         Optional<Item> itemOp = itemRepo.findById(id);
         if(itemOp.isPresent()){

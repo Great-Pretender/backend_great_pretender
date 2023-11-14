@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatpretender.api.projetoapijaia.entity.Servico;
 import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
 import com.greatpretender.api.projetoapijaia.service.IUsuarioService;
@@ -24,7 +23,6 @@ import com.greatpretender.api.projetoapijaia.service.IUsuarioService;
 public class UsuarioController {
    @Autowired
    private IUsuarioService service;
-
 
    @GetMapping
    public List<Usuario> buscarTodosUsuarios() {
@@ -37,7 +35,7 @@ public class UsuarioController {
      return service.novoUsuario(usuario);
    }
 
-
+   
    @GetMapping(value = "/{usuario}")
    public Usuario buscarPorId(@PathVariable("usuario") Long id) {
         return service.buscarPorId(id);

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Setor;
@@ -16,7 +17,7 @@ public class SetorService implements ISetorService{
     @Autowired
     private SetorRepository setorRepo;
 
-    
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Setor buscarPorId(Long id) {
         Optional<Setor> setorOp = setorRepo.findById(id);
         if (setorOp.isPresent()) {
@@ -25,6 +26,7 @@ public class SetorService implements ISetorService{
         throw new IllegalArgumentException("Id inválido!");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Setor novoSetor(Setor setor) {
         if(setor == null  ||
                 setor.getNome() == null) {
@@ -34,10 +36,12 @@ public class SetorService implements ISetorService{
     }
 
     // Lista todos dos sertores
+    @PreAuthorize("hasAnyRole('TECNICO', 'ADMIN')")
     public List<Setor> buscarTodosSetores() {
         return (List<Setor>) setorRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Setor deletarPorId(Long id){
         Optional<Setor> setorOp = setorRepo.findById(id);
         if(setorOp.isPresent()){

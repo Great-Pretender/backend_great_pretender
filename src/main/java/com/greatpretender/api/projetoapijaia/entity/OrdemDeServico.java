@@ -29,7 +29,7 @@ public class OrdemDeServico {
     private String descricao;
 
     @Column(name = "status_ordem")
-    private String status_ordem;
+    private String statusOrdem;
 
     @Column(name = "status_aprovacao")
     private String status_aprovacao;
@@ -56,10 +56,10 @@ public class OrdemDeServico {
     @JsonIgnore
     private Set<AtribuicaoOrdemServico> atribuicoes;
 
-        public OrdemDeServico(String descricao, String status_ordem, String status_aprovacao, LocalDate data_inicio, LocalDate data_fim) {
+        public OrdemDeServico(String descricao, String statusOrdem, String status_aprovacao, LocalDate data_inicio, LocalDate data_fim) {
             this();
             this.descricao = descricao;
-            this.status_ordem = status_ordem;
+            this.statusOrdem = statusOrdem;
             this.status_aprovacao = status_aprovacao;
             this.data_inicio = data_inicio;
             this.data_fim = data_fim;
@@ -85,11 +85,11 @@ public class OrdemDeServico {
         }
 
         public String getStatusOrdem() {
-            return status_ordem;
+            return statusOrdem;
         }
 
         public void setStatusOrdem(String status_ordem) {
-            this.status_ordem = status_ordem;
+            this.statusOrdem = status_ordem;
         }
 
         public Usuario getUsuario() {
@@ -117,11 +117,11 @@ public class OrdemDeServico {
         }
 
         public String getStatus_ordem() {
-            return status_ordem;
+            return statusOrdem;
         }
 
         public void setStatus_ordem(String status_ordem) {
-            this.status_ordem = status_ordem;
+            this.statusOrdem = status_ordem;
         }
 
         public String getStatus_aprovacao() {

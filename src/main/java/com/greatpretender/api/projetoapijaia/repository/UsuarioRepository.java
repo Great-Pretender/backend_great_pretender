@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.greatpretender.api.projetoapijaia.entity.Servico;
 import com.greatpretender.api.projetoapijaia.entity.Usuario;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
+    UserDetails findByCargo(String nome);
     Optional<Usuario> findByNome(String nome);
 
     List<Usuario> findUsuarioBySetorId(Long idUsuario);
