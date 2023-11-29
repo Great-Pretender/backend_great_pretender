@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.greatpretender.api.projetoapijaia.entity.Item;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.repository.ItemRepository;
 
 @Service
@@ -44,10 +45,10 @@ public class ItemService implements IItemService {
     }
 
     @PreAuthorize("hasAnyRole('TECNICO', 'ADMIN')")
-     public List<Item> buscarPorIdSetor(Setor idSetor){
+     public List<Item> buscarPorIdSetor(Setor nomeSetor){
         
         try{
-        List<Item> itens = usuarioRepo.findItemBySetorId(idSetor.getId());
+        List<Item> itens = itemRepo.findItemBySetor(nomeSetor.getNome());
        
             return itens;
         } catch (Exception e) {

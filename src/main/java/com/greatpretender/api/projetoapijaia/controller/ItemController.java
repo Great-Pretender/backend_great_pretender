@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatpretender.api.projetoapijaia.entity.Item;
+import com.greatpretender.api.projetoapijaia.entity.Setor;
 import com.greatpretender.api.projetoapijaia.service.IItemService;
 
 @RestController
@@ -39,8 +40,8 @@ public class ItemController {
     }
 
     @PostMapping(value = "/idSetor")
-      public List<Item> buscarPorIdSetor(@RequestBody Setor idSetor) {
-           return service.buscarPorIdSetor(idSetor);
+      public List<Item> buscarPorIdSetor(@RequestBody Setor nomeSetor) {
+           return service.buscarPorIdSetor(nomeSetor);
       }
 
    // Função para deletar produto por id
