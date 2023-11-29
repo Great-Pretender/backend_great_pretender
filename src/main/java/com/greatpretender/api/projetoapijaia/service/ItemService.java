@@ -43,6 +43,19 @@ public class ItemService implements IItemService {
         return itemRepo.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('TECNICO', 'ADMIN')")
+     public List<Item> buscarPorIdSetor(Setor idSetor){
+        
+        try{
+        List<Item> itens = usuarioRepo.findItemBySetorId(idSetor.getId());
+       
+            return itens;
+        } catch (Exception e) {
+        
+        throw new IllegalArgumentException("Id inválido! "+ e);
+            }
+    }
+
     @PreAuthorize("hasAnyRole('ADMIN')")
     public Item deletarPorId(Long id){
         Optional<Item> itemOp = itemRepo.findById(id);

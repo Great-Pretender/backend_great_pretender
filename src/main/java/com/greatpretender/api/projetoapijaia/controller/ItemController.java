@@ -38,6 +38,11 @@ public class ItemController {
         return service.buscarPorId(id);
     }
 
+    @PostMapping(value = "/idSetor")
+      public List<Item> buscarPorIdSetor(@RequestBody Setor idSetor) {
+           return service.buscarPorIdSetor(idSetor);
+      }
+
    // Função para deletar produto por id
    @DeleteMapping(value = "/{item}")
    public Item deleteItem(@PathVariable("item") Long id) {
